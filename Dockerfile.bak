@@ -1,0 +1,12 @@
+FROM fluent/fluent-bit:latest
+
+# Configuration files
+COPY fluent-bit.conf \
+     parsers.conf \
+     parsers_haproxy.conf \
+     /fluent-bit/etc/
+
+EXPOSE 2020
+
+# Entry point
+CMD ["/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.conf"]
